@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
             comboBox5.DisplayMember = "id_data";
             comboBox5.ValueMember = "nomerPary";
 
-            ///////////////////////////////////////////////Для добавления и удаления и изменения////////////
+            ///////////////////////////////////////////////Для добавления и удаления////////////
             string selectQuery7 = "Select DISTINCT korpys from Auditorya";
             MySqlDataAdapter da = new MySqlDataAdapter(selectQuery7, connection);
             DataSet ds = new DataSet();
@@ -74,14 +74,6 @@ namespace WindowsFormsApp1
             comboBox12.DataSource = ds12.Tables[0];
             comboBox12.DisplayMember = "id_Aud";
             comboBox12.ValueMember = "nomer";
-
-            string selectQuery71 = "Select DISTINCT korpys from Auditorya";
-            MySqlDataAdapter da3 = new MySqlDataAdapter(selectQuery71, connection);
-            DataSet ds3 = new DataSet();
-            da3.Fill(ds3);
-            comboBox1.DataSource = ds3.Tables[0];
-            comboBox1.DisplayMember = "id_Aud";
-            comboBox1.ValueMember = "korpys";
             /////////////////////////////////////////// Для добавления занятия////////////////////
 
             string selectQuery21 = "Select DISTINCT denNedeli from DataPar";
@@ -156,7 +148,7 @@ namespace WindowsFormsApp1
             comboBox15.DisplayMember = "id_nap";
             comboBox15.ValueMember = "kafedra";
 
-        }//Подгрузка при запуске
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -182,10 +174,12 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
 
         }//Поиск свободных аудиторий
 
+
         private void button4_Click(object sender, EventArgs e)
         {
             Application.Restart();
         }//Перезагрузить приложение
+
 
         private void button3_Click(object sender, EventArgs e)
         {            
@@ -219,21 +213,6 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
             MessageBox.Show("Аудитория удалена!");
         }//Удалить аудиторию
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            int nomayd2 = Convert.ToInt32(textBox4.Text);
-            int kolvom2 = Convert.ToInt32(textBox3.Text);
-            int aidi = Convert.ToInt32(textBox7.Text);
-            string dept = comboBox1.Text;
-
-
-            string selectQuery13 = "UPDATE Auditorya SET nomer='" + nomayd2 + "', kolvoMest='" + kolvom2 + "', korpys='" + comboBox1.SelectedValue.ToString() + "' WHERE id_Aud='"+ aidi +"'";
-            MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
-            connection.Open();
-            da13.ExecuteNonQuery();
-            MessageBox.Show("Данные изменены!");
-        }//Изменение аудитории
-
         private void button1_Click(object sender, EventArgs e)
         {
             string denned = Convert.ToString(comboBox7.Items[comboBox7.SelectedIndex]);
@@ -256,7 +235,7 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
             MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
            connection.Open();
             da13.ExecuteNonQuery();
-            //MessageBox.Show("Данные добавлены!");
+            MessageBox.Show("Данные добавлены!");
 
             //вывод даты если совпало с выбраными
             string selectQuery140 = "Select DISTINCT id_data from DataPar where denNedeli='" + comboBox7.SelectedValue.ToString() + "' and nomerPary='" + comboBox8.SelectedValue.ToString() + "' and nedStart='" + nachned + "' and nedEnd ='" + konned + "'";
@@ -298,6 +277,7 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
             MySqlCommand da145 = new MySqlCommand(selectQuery145, connection);
             da145.ExecuteNonQuery();
             string name145 = da145.ExecuteScalar().ToString();
+            // выводим ответ в консоль
             //MessageBox.Show(name);
 
             string selectQuery15 = "INSERT INTO Raspis(id_data, id_Zanatia, id_Prep, id_Aud, id_gr, id_nap) VALUES ('" + name140 + "','" + name141 + "','" + name142 + "','" + name143 + "','" + name144 + "','" + name145 + "')";
@@ -305,7 +285,8 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
             //connection.Open();
             da14.ExecuteNonQuery();
             MessageBox.Show("Занятие добавлено!");
-            
+            //MessageBox.Show("INSERT INTO Raspis(id_data, id_Zanatia, id_Prep, id_Aud, id_gr, id_nap) VALUES ('" + selectQuery140 + "','" + selectQuery141 + "','" + selectQuery142 + "','" + selectQuery143 + "','" + selectQuery144 + "','" + selectQuery145 + "')");
+            //если срабативает условие, то эти два под запроса как переменную в запрос на добавление Auditorya.nomer, Grypa.name,  Prepodavateli.FIOpr, Zanatie.nazvanie, Napravlenie.kafedra
         }//Добавить занятие
 
     }

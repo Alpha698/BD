@@ -34,6 +34,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.comboBox12 = new System.Windows.Forms.ComboBox();
@@ -79,12 +87,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
@@ -149,6 +158,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox1);
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.comboBox6);
@@ -167,12 +177,90 @@
             this.tabPage4.Text = "Аудитории";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Location = new System.Drawing.Point(6, 368);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(545, 78);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Изменить данные о аудитории:";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(353, 33);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 33;
+            this.button7.Text = "Изменить";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(200, 35);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(147, 21);
+            this.comboBox1.TabIndex = 29;
+            this.comboBox1.Text = "Административный";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(197, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 13);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Корпус:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(105, 36);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(90, 20);
+            this.textBox3.TabIndex = 28;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(101, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 13);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "Кол-во мест:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(9, 36);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(90, 20);
+            this.textBox4.TabIndex = 27;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 19);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 13);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "Номер:";
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button6);
             this.groupBox3.Controls.Add(this.comboBox12);
             this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Location = new System.Drawing.Point(473, 333);
+            this.groupBox3.Location = new System.Drawing.Point(470, 299);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(228, 66);
             this.groupBox3.TabIndex = 34;
@@ -216,7 +304,7 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.textBox5);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Location = new System.Drawing.Point(9, 333);
+            this.groupBox2.Location = new System.Drawing.Point(6, 299);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(458, 66);
             this.groupBox2.TabIndex = 33;
@@ -438,8 +526,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox4);
-            this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Controls.Add(this.textBox2);
             this.groupBox4.Controls.Add(this.textBox1);
             this.groupBox4.Controls.Add(this.comboBox15);
@@ -647,19 +733,21 @@
             this.comboBox11.TabIndex = 27;
             this.comboBox11.Text = "101";
             // 
-            // textBox3
+            // textBox7
             // 
-            this.textBox3.Location = new System.Drawing.Point(109, 38);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 38;
+            this.textBox7.Location = new System.Drawing.Point(434, 36);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(90, 20);
+            this.textBox7.TabIndex = 34;
             // 
-            // textBox4
+            // label21
             // 
-            this.textBox4.Location = new System.Drawing.Point(109, 82);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 39;
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(431, 19);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(21, 13);
+            this.label21.TabIndex = 35;
+            this.label21.Text = "ID:";
             // 
             // Form1
             // 
@@ -677,6 +765,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -746,8 +836,16 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
 

@@ -35,3 +35,14 @@ D:\University_!\BD\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.
 D:\University_!\BD\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
 D:\University_!\BD\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 D:\University_!\BD\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+D:\REP\BD\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\REP\BD\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\REP\BD\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\REP\BD\WindowsFormsApp1\bin\Debug\MySql.Data.dll
+D:\REP\BD\WindowsFormsApp1\bin\Debug\MySql.Data.xml
+D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
