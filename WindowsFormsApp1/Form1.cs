@@ -156,6 +156,31 @@ namespace WindowsFormsApp1
             comboBox15.DisplayMember = "id_nap";
             comboBox15.ValueMember = "kafedra";
 
+            ////////////////////////////Список всех преподов////////////
+
+            string selectQuery115 = @"Select * from Prepodavateli ";
+
+            DataTable table115 = new DataTable();
+            MySqlDataAdapter adapter115 = new MySqlDataAdapter(selectQuery115, connection);
+            adapter115.Fill(table115);
+            dataGridView1.DataSource = table115;
+
+            string selectQuery17 = "Select DISTINCT FIOpr from Prepodavateli";
+            MySqlDataAdapter da17 = new MySqlDataAdapter(selectQuery17, connection);
+            DataSet ds17 = new DataSet();
+            da17.Fill(ds17);
+            comboBox18.DataSource = ds17.Tables[0];
+            comboBox18.DisplayMember = "id_Prep";
+            comboBox18.ValueMember = "FIOpr";
+
+            string selectQuery18 = "Select DISTINCT kafedra from Napravlenie";
+            MySqlDataAdapter da18 = new MySqlDataAdapter(selectQuery18, connection);
+            DataSet ds18 = new DataSet();
+            da18.Fill(ds18);
+            comboBox17.DataSource = ds18.Tables[0];
+            comboBox17.DisplayMember = "id_nap";
+            comboBox17.ValueMember = "kafedra";
+
         }//Подгрузка при запуске
 
         private void button5_Click(object sender, EventArgs e)
@@ -167,7 +192,7 @@ namespace WindowsFormsApp1
 
             if (denned != null && nompar != null && ned != null)
             {
-                string selectQuery7 = @"Select DISTINCT Auditorya.id_Aud, Auditorya.nomer,Auditorya.korpys from Raspis 
+                string selectQuery7 = @"Select DISTINCT Auditorya.nomer,Auditorya.korpys from Raspis 
 inner join DataPar on DataPar.id_data = Raspis.id_data
 inner join Auditorya on Auditorya.id_Aud = Raspis.id_Aud WHERE Auditorya.id_Aud NOT IN (Select Auditorya.id_Aud from Raspis 
 inner join DataPar on DataPar.id_data = Raspis.id_data
@@ -308,11 +333,44 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
             
         }//Добавить занятие
 
+        private void button14_Click(object sender, EventArgs e)
+        {
+            string FIOpr = Convert.ToString(comboBox18.Items[comboBox18.SelectedIndex]);
+            string kaf = Convert.ToString(comboBox17.Items[comboBox17.SelectedIndex]);
+
+            if (FIOpr != null && kaf != null )
+            {
+                string selectQuery77 = @"Select FIOpr, doljnost from Prepodavateli where FIOpr = '" + comboBox18.SelectedValue.ToString() + "'";
+                DataTable tableay1 = new DataTable();
+                MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery77, connection);
+                adapteray1.Fill(tableay1);
+                dataGridView2.DataSource = tableay1;
+            }
+        }//Поиск преподавателя
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            int fiop = Convert.ToInt32(textBox12.Text);
+            int nomy = Convert.ToInt32(textBox11.Text);
+            int staj = Convert.ToInt32(textBox15.Text);
+
+            string selectQuery13 = "INSERT INTO Prepodavateli(nomer, kolvoMest, korpys) VALUES ('" + nomayd + "','" + kolvom + "','" + dept + "')";
+            MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
+            connection.Open();
+            da13.ExecuteNonQuery();
+            MessageBox.Show("Преподаватель добавлен!");
+        }//Добавить нового препода
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }//Изменить данные о преподе
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }//Уволить препода
+
     }
 }
 
-
-
-//Добавить таблицы:
-//
-// 
