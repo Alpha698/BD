@@ -181,6 +181,26 @@ namespace WindowsFormsApp1
             comboBox17.DisplayMember = "id_nap";
             comboBox17.ValueMember = "kafedra";
 
+            string selectQuery19 = "Select DISTINCT doljnost from Prepodavateli";
+            MySqlDataAdapter da19 = new MySqlDataAdapter(selectQuery19, connection);
+            DataSet ds19 = new DataSet();
+            da19.Fill(ds19);
+            comboBox16.DataSource = ds19.Tables[0];
+            comboBox16.DisplayMember = "id_Prep";
+            comboBox16.ValueMember = "doljnost";
+
+            comboBox9.DataSource = ds19.Tables[0];
+            comboBox9.DisplayMember = "id_Prep";
+            comboBox9.ValueMember = "doljnost";
+
+            ///////////////////////////////////////////////Изменить занятие////////////
+            string selectQuery116 = @"Select * from Raspis ";
+
+            DataTable table116 = new DataTable();
+            MySqlDataAdapter adapter116 = new MySqlDataAdapter(selectQuery116, connection);
+            adapter116.Fill(table116);
+            dataGridView6.DataSource = table116;
+
         }//Подгрузка при запуске
 
         private void button5_Click(object sender, EventArgs e)
@@ -350,11 +370,11 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
 
         private void button13_Click(object sender, EventArgs e)
         {
-            int fiop = Convert.ToInt32(textBox12.Text);
-            int nomy = Convert.ToInt32(textBox11.Text);
-            int staj = Convert.ToInt32(textBox15.Text);
+            string fiop = Convert.ToString(textBox12.Text);
+            string nomy = Convert.ToString(textBox11.Text);
+            string staj = Convert.ToString(textBox15.Text);
 
-            string selectQuery13 = "INSERT INTO Prepodavateli(nomer, kolvoMest, korpys) VALUES ('" + nomayd + "','" + kolvom + "','" + dept + "')";
+            string selectQuery13 = "INSERT INTO Prepodavateli(FIOpr, nomerUdostov, doljnost, staj) VALUES ('" + fiop + "','" + nomy + "','" + comboBox16.SelectedValue.ToString() + "','" + staj + "')";
             MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
             connection.Open();
             da13.ExecuteNonQuery();
@@ -363,14 +383,57 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
 
         private void button11_Click(object sender, EventArgs e)
         {
+            string fiop = Convert.ToString(textBox10.Text);
+            string nomy = Convert.ToString(textBox9.Text);
+            string staj = Convert.ToString(textBox16.Text);
+            string prid = Convert.ToString(textBox8.Text);
 
+            string selectQuery13 = "UPDATE Prepodavateli SET FIOpr='" + fiop + "', nomerUdostov='" + nomy + "', doljnost='" + comboBox9.SelectedValue.ToString() + "', staj='" + staj + "' WHERE id_Prep='" + prid + "'";
+            MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
+            connection.Open();
+            da13.ExecuteNonQuery();
+            MessageBox.Show("Данные изменены!");
         }//Изменить данные о преподе
 
         private void button12_Click(object sender, EventArgs e)
         {
+            string fiop = Convert.ToString(textBox14.Text);
+            string nomy = Convert.ToString(textBox13.Text);
 
+            string selectQuery14 = "DELETE FROM Prepodavateli where FIOpr = '" + fiop + "' and id_Prep='"+nomy+"'";
+            MySqlCommand da13 = new MySqlCommand(selectQuery14, connection);
+            connection.Open();
+            da13.ExecuteNonQuery();
+            MessageBox.Show("Преподаватель удален!");
         }//Уволить препода
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string data = Convert.ToString(textBox17.Text);
+            string zanat = Convert.ToString(textBox18.Text);
+            string prep = Convert.ToString(textBox19.Text);
+            string aud = Convert.ToString(textBox20.Text);
+            string gr = Convert.ToString(textBox21.Text);
+            string nap = Convert.ToString(textBox22.Text);
+            string zap = Convert.ToString(textBox23.Text);
+
+            string selectQuery13 = "UPDATE Raspis SET id_data='" + data + "', id_Zanatia='" + zanat + "', id_Prep='" + prep + "', id_Aud='" + aud + "' , id_gr='" + gr + "', id_nap='" + nap + "' WHERE id_zap='" + zap + "'";
+            MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
+            connection.Open();
+            da13.ExecuteNonQuery();
+            MessageBox.Show("Данные изменены!");
+        }//Изменить пункт расписания (занятие)
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            string fiop = Convert.ToString(textBox24.Text);
+
+            string selectQuery14 = "DELETE FROM Raspis where id_zap = '" + fiop + "'";
+            MySqlCommand da13 = new MySqlCommand(selectQuery14, connection);
+            connection.Open();
+            da13.ExecuteNonQuery();
+            MessageBox.Show("Преподаватель удален!");
+        }//Удалить занятие
     }
 }
 
