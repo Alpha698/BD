@@ -22,18 +22,20 @@ namespace WindowsFormsApp1
         MySqlConnection connection = new MySqlConnection("server=localhost;port=3306; Initial Catalog='Practical_classes';username=root;password=;SslMode=none");
         private void Form1_Load(object sender, EventArgs e)
         {
-            //string selectQuery5 = @"Select DataPar.denNedeli, DataPar.nomerPary, Zanatie.nazvanie, Prepodavateli.FIOpr, Auditorya.nomer, Grypa.name, DataPar.nedStart, DataPar.nedEnd 
-            //                        from Raspis 
-            //                        inner join DataPar on DataPar.id_data = Raspis.id_data 
-            //                        inner join Zanatie on Zanatie.id_Zanatia = Raspis.id_Zanatia 
-            //                        inner join Prepodavateli on Prepodavateli.id_Prep = Raspis.id_Prep 
-            //                        inner join Auditorya on Auditorya.id_Aud = Raspis.id_Aud 
-            //                        inner join Grypa on Grypa.id_gr = Raspis.id_gr ";
+            string selectQuery5 = @"Select study_group.name_group, day_week.name_day, number_lesson.number, discipline.name_discipline, teachers.FIO_teacher, audience.number_aud, number_lesson.week_start, number_lesson.week_end
+                                    from sschedule 
+                                    inner join study_group on study_group.id_group = sschedule.id_group 
+                                    inner join audience on audience.number_aud = sschedule.number_aud
+                                    inner join teachers on teachers.id_teacher = sschedule.id_teacher
+                                    inner join discipline on discipline.id_discipline = sschedule.id_discipline
+                                    inner join day_week on day_week.id_day = sschedule.id_day 
+                                    inner join type_occupation on type_occupation.id_type = sschedule.id_type
+                                    inner join number_lesson on number_lesson.id_num = sschedule.id_num";
 
-            //DataTable table = new DataTable();
-            //MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery5, connection);
-            //adapter.Fill(table);
-            //dataGridView4.DataSource = table;
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery5, connection);
+            adapter.Fill(table);
+            dataGridView4.DataSource = table;
 
             string selectQuery6 = "SELECT * FROM audience";
             DataTable tableay = new DataTable();
@@ -41,38 +43,49 @@ namespace WindowsFormsApp1
             adapteray.Fill(tableay);
             dataGridView3.DataSource = tableay;
             //////////////////////////////////////////////////Для выбора своб аудитории////////////
-            //string selectQuery9 = "Select DISTINCT denNedeli from DataPar";
-            //MySqlDataAdapter da9 = new MySqlDataAdapter(selectQuery9, connection);
-            //DataSet ds9 = new DataSet();
-            //da9.Fill(ds9);
-            //comboBox4.DataSource = ds9.Tables[0];
-            //comboBox4.DisplayMember = "id_data";
-            //comboBox4.ValueMember = "denNedeli";
+            string selectQuery9 = "Select DISTINCT name_day from day_week";
+            MySqlDataAdapter da9 = new MySqlDataAdapter(selectQuery9, connection);
+            DataSet ds9 = new DataSet();
+            da9.Fill(ds9);
+            comboBox4.DataSource = ds9.Tables[0];
+            comboBox4.DisplayMember = "id_day";
+            comboBox4.ValueMember = "name_day";
 
-            //string selectQuery10 = "Select DISTINCT nomerPary from DataPar";
-            //MySqlDataAdapter da10 = new MySqlDataAdapter(selectQuery10, connection);
-            //DataSet ds10 = new DataSet();
-            //da10.Fill(ds10);
-            //comboBox5.DataSource = ds10.Tables[0];
-            //comboBox5.DisplayMember = "id_data";
-            //comboBox5.ValueMember = "nomerPary";
+            string selectQuery10 = "Select DISTINCT number from number_lesson";
+            MySqlDataAdapter da10 = new MySqlDataAdapter(selectQuery10, connection);
+            DataSet ds10 = new DataSet();
+            da10.Fill(ds10);
+            comboBox5.DataSource = ds10.Tables[0];
+            comboBox5.DisplayMember = "id_num";
+            comboBox5.ValueMember = "number";
+
+            //string selectQuery101 = "Select DISTINCT number from number_lesson";
+            //MySqlDataAdapter da101 = new MySqlDataAdapter(selectQuery101, connection);
+            //DataSet ds101 = new DataSet();
+            //da101.Fill(ds101);
+            //comboBox6.DataSource = ds101.Tables[0];
+            //comboBox6.DisplayMember = "id_num";
+            //comboBox6.ValueMember = "number";
 
             ///////////////////////////////////////////////Для добавления и удаления и изменения////////////
             string selectQuery7 = "Select DISTINCT number_aud from audience";
             MySqlDataAdapter da = new MySqlDataAdapter(selectQuery7, connection);
             DataSet ds = new DataSet();
             da.Fill(ds);
-            comboBox1.DataSource = ds.Tables[0];
-            comboBox1.DisplayMember = "number_aud";
-            comboBox1.ValueMember = "number_aud";
-
-            string selectQuery8 = "Select DISTINCT quantity_seats from audience";
-            MySqlDataAdapter da12 = new MySqlDataAdapter(selectQuery8, connection);
-            DataSet ds12 = new DataSet();
-            da12.Fill(ds12);
-            comboBox12.DataSource = ds12.Tables[0];
+            comboBox13.DataSource = ds.Tables[0];
+            comboBox13.DisplayMember = "number_aud";
+            comboBox13.ValueMember = "number_aud";
+            comboBox12.DataSource = ds.Tables[0];
             comboBox12.DisplayMember = "number_aud";
-            comboBox12.ValueMember = "quantity_seats";
+            comboBox12.ValueMember = "number_aud";
+
+            //string selectQuery8 = "Select DISTINCT quantity_seats from audience";
+            //MySqlDataAdapter da12 = new MySqlDataAdapter(selectQuery8, connection);
+            //DataSet ds12 = new DataSet();
+            //da12.Fill(ds12);
+            //comboBox12.DataSource = ds12.Tables[0];
+            //comboBox12.DisplayMember = "number_aud";
+            //comboBox12.ValueMember = "quantity_seats";
 
             string selectQuery71 = "Select DISTINCT housing from audience";
             MySqlDataAdapter da3 = new MySqlDataAdapter(selectQuery71, connection);
@@ -81,6 +94,10 @@ namespace WindowsFormsApp1
             comboBox2.DataSource = ds3.Tables[0];
             comboBox2.DisplayMember = "number_aud";
             comboBox2.ValueMember = "housing";
+            comboBox1.DataSource = ds3.Tables[0];
+            comboBox1.DisplayMember = "number_aud";
+            comboBox1.ValueMember = "housing";
+
             /////////////////////////////////////////// Для добавления занятия////////////////////
 
             string selectQuery21 = "Select DISTINCT denNedeli from DataPar";
@@ -211,12 +228,19 @@ namespace WindowsFormsApp1
 
             if (denned != null && nompar != null && ned != null)
             {
-                string selectQuery7 = @"Select DISTINCT Auditorya.nomer,Auditorya.korpys from Raspis 
-inner join DataPar on DataPar.id_data = Raspis.id_data
-inner join Auditorya on Auditorya.id_Aud = Raspis.id_Aud WHERE Auditorya.id_Aud NOT IN (Select Auditorya.id_Aud from Raspis 
-inner join DataPar on DataPar.id_data = Raspis.id_data
- inner join Auditorya on Auditorya.id_Aud = Raspis.id_Aud
-where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar + "' and '" + ned + "' between DataPar.nedStart and DataPar.nedEnd)";
+
+            string selectQuery7 = @"Select DISTINCT audience.number_aud, audience.housing from sschedule
+inner join day_week on day_week.id_day = sschedule.id_day
+inner join number_lesson on number_lesson.id_num = sschedule.id_num
+inner join audience on audience.number_aud = sschedule.number_aud WHERE audience.number_aud NOT IN(Select audience.number_aud from sschedule
+inner join day_week on day_week.id_day = sschedule.id_day
+inner join number_lesson on number_lesson.id_num = sschedule.id_num
+inner join audience on audience.number_aud = sschedule.number_aud
+where day_week.name_day = '" + denned + "' and number_lesson.number = '" + nompar + "' and '" + ned + "' between number_lesson.week_start and number_lesson.week_end)";
+
+
+                //выводитлишние аудитории
+
                 //where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar + "'";
                 DataTable tableay1 = new DataTable();
                 MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery7, connection);
@@ -249,14 +273,14 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
             MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
             connection.Open();
             da13.ExecuteNonQuery();
-            MessageBox.Show("Данные добавлены!");
+            MessageBox.Show("Аудитория добавлена!");
         }//Добавить аудиторию
 
         private void button6_Click(object sender, EventArgs e)
         {
             string yda = comboBox12.Text;
 
-            string selectQuery14 = "DELETE FROM Auditorya where Auditorya.nomer = '" + yda + "'";
+            string selectQuery14 = "DELETE FROM audience where number_aud = '" + yda + "'";
             MySqlCommand da13 = new MySqlCommand(selectQuery14, connection);
             connection.Open();
             da13.ExecuteNonQuery();
@@ -265,13 +289,12 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
 
         private void button7_Click(object sender, EventArgs e)
         {
-            int nomayd2 = Convert.ToInt32(textBox4.Text);
+            string num = comboBox13.Text;
             int kolvom2 = Convert.ToInt32(textBox3.Text);
-            int aidi = Convert.ToInt32(textBox7.Text);
             string dept = comboBox1.Text;
 
 
-            string selectQuery13 = "UPDATE Auditorya SET nomer='" + nomayd2 + "', kolvoMest='" + kolvom2 + "', korpys='" + comboBox1.SelectedValue.ToString() + "' WHERE id_Aud='"+ aidi +"'";
+            string selectQuery13 = "UPDATE audience SET quantity_seats='" + kolvom2 + "', housing='" + comboBox1.SelectedValue.ToString() + "' WHERE number_aud='" + num + "'";
             MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
             connection.Open();
             da13.ExecuteNonQuery();
@@ -433,6 +456,11 @@ where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar +
             da13.ExecuteNonQuery();
             MessageBox.Show("Преподаватель удален!");
         }//Удалить занятие
+
+        //private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }
 

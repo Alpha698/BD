@@ -37,14 +37,11 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button8 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -147,6 +144,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.comboBox11 = new System.Windows.Forms.ComboBox();
+            this.comboBox13 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -261,45 +259,26 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.comboBox13);
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Location = new System.Drawing.Point(6, 368);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(546, 78);
+            this.groupBox1.Size = new System.Drawing.Size(452, 78);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Изменить данные о аудитории:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(447, 19);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(25, 13);
-            this.label21.TabIndex = 35;
-            this.label21.Text = "ID*:";
-            // 
-            // textBox7
-            // 
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox7.Location = new System.Drawing.Point(450, 36);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(90, 20);
-            this.textBox7.TabIndex = 34;
             // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Silver;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button7.Location = new System.Drawing.Point(353, 33);
+            this.button7.Location = new System.Drawing.Point(362, 33);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 33;
@@ -323,9 +302,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(197, 19);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 13);
+            this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 32;
-            this.label7.Text = "Корпус:";
+            this.label7.Text = "Корпус";
             // 
             // textBox3
             // 
@@ -340,26 +319,18 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(101, 19);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 13);
+            this.label8.Size = new System.Drawing.Size(69, 13);
             this.label8.TabIndex = 31;
-            this.label8.Text = "Кол-во мест:";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Location = new System.Drawing.Point(9, 36);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(90, 20);
-            this.textBox4.TabIndex = 27;
+            this.label8.Text = "Кол-во мест";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(6, 19);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 13);
+            this.label19.Size = new System.Drawing.Size(41, 13);
             this.label19.TabIndex = 30;
-            this.label19.Text = "Номер:";
+            this.label19.Text = "Номер";
             // 
             // groupBox3
             // 
@@ -378,7 +349,7 @@
             // 
             this.button6.BackColor = System.Drawing.Color.Silver;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Location = new System.Drawing.Point(147, 33);
+            this.button6.Location = new System.Drawing.Point(144, 32);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 32;
@@ -402,9 +373,9 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(6, 19);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(90, 13);
+            this.label20.Size = new System.Drawing.Size(96, 13);
             this.label20.TabIndex = 12;
-            this.label20.Text = "Ном. аудитории:";
+            this.label20.Text = "Номер аудитории";
             // 
             // groupBox2
             // 
@@ -418,7 +389,7 @@
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox2.Location = new System.Drawing.Point(6, 299);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(443, 66);
+            this.groupBox2.Size = new System.Drawing.Size(452, 66);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Добавить аудиторию:";
@@ -451,9 +422,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(197, 19);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 13);
+            this.label12.Size = new System.Drawing.Size(43, 13);
             this.label12.TabIndex = 21;
-            this.label12.Text = "Корпус:";
+            this.label12.Text = "Корпус";
             // 
             // textBox6
             // 
@@ -468,9 +439,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(101, 19);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(72, 13);
+            this.label11.Size = new System.Drawing.Size(69, 13);
             this.label11.TabIndex = 20;
-            this.label11.Text = "Кол-во мест:";
+            this.label11.Text = "Кол-во мест";
             // 
             // textBox5
             // 
@@ -485,9 +456,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(6, 19);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 19;
-            this.label10.Text = "Номер:";
+            this.label10.Text = "Номер";
             // 
             // comboBox6
             // 
@@ -495,26 +466,26 @@
             this.comboBox6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Items.AddRange(new object[] {
-            "1 неделя",
-            "2 неделя",
-            "3 неделя",
-            "4 неделя",
-            "5 неделя",
-            "6 неделя",
-            "7 неделя",
-            "8 неделя",
-            "9 неделя",
-            "10 неделя",
-            "11 неделя",
-            "12 неделя",
-            "13 неделя",
-            "14 неделя",
-            "15 неделя",
-            "16 неделя",
-            "17 неделя",
-            "18 неделя",
-            "19 неделя",
-            "20 неделя"});
+            "1",
+            "2 ",
+            "3 ",
+            "4 ",
+            "5 ",
+            "6 ",
+            "7 ",
+            "8 ",
+            "9 ",
+            "10 ",
+            "11 ",
+            "12 ",
+            "13 ",
+            "14 ",
+            "15 ",
+            "16 ",
+            "17",
+            "18 ",
+            "19",
+            "20"});
             this.comboBox6.Location = new System.Drawing.Point(689, 37);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(90, 21);
@@ -547,11 +518,6 @@
             this.comboBox5.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "1 пара",
-            "2 пара",
-            "3 пара",
-            "4 пара"});
             this.comboBox5.Location = new System.Drawing.Point(593, 37);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(90, 21);
@@ -563,17 +529,12 @@
             this.comboBox4.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "Понедельник",
-            "Вторник",
-            "Среда",
-            "Четверг",
-            "Пятница"});
             this.comboBox4.Location = new System.Drawing.Point(497, 37);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(90, 21);
             this.comboBox4.TabIndex = 3;
             this.comboBox4.Text = "Понедельник";
+         
             // 
             // dataGridView5
             // 
@@ -1465,6 +1426,17 @@
             this.comboBox11.TabIndex = 27;
             this.comboBox11.Text = "101";
             // 
+            // comboBox13
+            // 
+            this.comboBox13.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.comboBox13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBox13.FormattingEnabled = true;
+            this.comboBox13.Location = new System.Drawing.Point(8, 36);
+            this.comboBox13.Name = "comboBox13";
+            this.comboBox13.Size = new System.Drawing.Size(90, 21);
+            this.comboBox13.TabIndex = 37;
+            this.comboBox13.Text = "101";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1572,10 +1544,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -1634,6 +1603,7 @@
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.TextBox textBox24;
         private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.ComboBox comboBox13;
     }
 }
 
