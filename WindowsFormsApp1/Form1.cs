@@ -26,8 +26,7 @@ namespace WindowsFormsApp1
                                     from sschedule 
                                     inner join study_group on study_group.id_group = sschedule.id_group 
                                     inner join audience on audience.number_aud = sschedule.number_aud
-                                    inner join teachers on teachers.id_teacher = sschedule.id_teacher
-                                    inner join discipline on discipline.id_discipline = sschedule.id_discipline
+                                    inner join teachers on teachers.id_teacher = sschedule.id_teacher                                   
                                     inner join day_week on day_week.id_day = sschedule.id_day 
                                     inner join type_occupation on type_occupation.id_type = sschedule.id_type
                                     inner join number_lesson on number_lesson.id_num = sschedule.id_num";
@@ -457,14 +456,7 @@ where day_week.name_day = '" + denned + "' and number_lesson.number = '" + nompa
             MessageBox.Show("Преподаватель удален!");
         }//Удалить занятие
 
-        //private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
     }
 }
 
-//преподаватели к занятию, дисциплину?
-//древовидную структуру
 //чтоб изменять занятие не по айди а по выпад спискам
-//преподавателей переделать
