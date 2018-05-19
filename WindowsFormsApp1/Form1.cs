@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
                                     inner join type_occupation on type_occupation.id_type = sschedule.id_type
                                     inner join number_lesson on number_lesson.id_num = sschedule.id_num
                                     WHERE study_group.id_specialty IN (Select id_specialty from specialty
-where  discipline.id_discipline = specialty.id_discipline)";
+                                                                        where  discipline.id_discipline = specialty.id_discipline)";
 
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery5, connection);
@@ -60,14 +60,6 @@ where  discipline.id_discipline = specialty.id_discipline)";
             comboBox5.DisplayMember = "id_num";
             comboBox5.ValueMember = "number";
 
-            //string selectQuery101 = "Select DISTINCT number from number_lesson";
-            //MySqlDataAdapter da101 = new MySqlDataAdapter(selectQuery101, connection);
-            //DataSet ds101 = new DataSet();
-            //da101.Fill(ds101);
-            //comboBox6.DataSource = ds101.Tables[0];
-            //comboBox6.DisplayMember = "id_num";
-            //comboBox6.ValueMember = "number";
-
             ///////////////////////////////////////////////Для добавления и удаления и изменения////////////
             string selectQuery7 = "Select DISTINCT number_aud from audience";
             MySqlDataAdapter da = new MySqlDataAdapter(selectQuery7, connection);
@@ -79,14 +71,6 @@ where  discipline.id_discipline = specialty.id_discipline)";
             comboBox12.DataSource = ds.Tables[0];
             comboBox12.DisplayMember = "number_aud";
             comboBox12.ValueMember = "number_aud";
-
-            //string selectQuery8 = "Select DISTINCT quantity_seats from audience";
-            //MySqlDataAdapter da12 = new MySqlDataAdapter(selectQuery8, connection);
-            //DataSet ds12 = new DataSet();
-            //da12.Fill(ds12);
-            //comboBox12.DataSource = ds12.Tables[0];
-            //comboBox12.DisplayMember = "number_aud";
-            //comboBox12.ValueMember = "quantity_seats";
 
             string selectQuery71 = "Select DISTINCT housing from audience";
             MySqlDataAdapter da3 = new MySqlDataAdapter(selectQuery71, connection);
@@ -101,21 +85,21 @@ where  discipline.id_discipline = specialty.id_discipline)";
 
             /////////////////////////////////////////// Для добавления занятия////////////////////
 
-            string selectQuery21 = "Select DISTINCT denNedeli from DataPar";
-            MySqlDataAdapter da21 = new MySqlDataAdapter(selectQuery21, connection);
-            DataSet ds21 = new DataSet();
-            da21.Fill(ds21);
-            comboBox7.DataSource = ds21.Tables[0];
-            comboBox7.DisplayMember = "id_data";
-            comboBox7.ValueMember = "denNedeli";
+            //string selectQuery21 = "Select DISTINCT denNedeli from DataPar";
+            //MySqlDataAdapter da21 = new MySqlDataAdapter(selectQuery21, connection);
+            //DataSet ds21 = new DataSet();
+            //da21.Fill(ds21);
+            //comboBox7.DataSource = ds21.Tables[0];
+            //comboBox7.DisplayMember = "id_data";
+            //comboBox7.ValueMember = "denNedeli";
 
-            string selectQuery22 = "Select DISTINCT nomerPary from DataPar";
-            MySqlDataAdapter da22 = new MySqlDataAdapter(selectQuery22, connection);
-            DataSet ds22 = new DataSet();
-            da22.Fill(ds22);
-            comboBox8.DataSource = ds22.Tables[0];
-            comboBox8.DisplayMember = "id_data";
-            comboBox8.ValueMember = "nomerPary";
+            //string selectQuery22 = "Select DISTINCT nomerPary from DataPar";
+            //MySqlDataAdapter da22 = new MySqlDataAdapter(selectQuery22, connection);
+            //DataSet ds22 = new DataSet();
+            //da22.Fill(ds22);
+            //comboBox8.DataSource = ds22.Tables[0];
+            //comboBox8.DisplayMember = "id_data";
+            //comboBox8.ValueMember = "nomerPary";
 
             //string selectQuery25 = "Select DISTINCT nedStart from DataPar";
             //MySqlDataAdapter da25 = new MySqlDataAdapter(selectQuery25, connection);
@@ -133,50 +117,53 @@ where  discipline.id_discipline = specialty.id_discipline)";
             //comboBox13.DisplayMember = "id_data";
             //comboBox13.ValueMember = "nedEnd";
 
-            string selectQuery23 = "Select DISTINCT nomer from Auditorya";
-            MySqlDataAdapter da23 = new MySqlDataAdapter(selectQuery23, connection);
-            DataSet ds23 = new DataSet();
-            da23.Fill(ds23);
-            comboBox11.DataSource = ds23.Tables[0];
-            comboBox11.DisplayMember = "id_Aud";
-            comboBox11.ValueMember = "nomer";
+            //string selectQuery23 = "Select DISTINCT nomer from Auditorya";
+            //MySqlDataAdapter da23 = new MySqlDataAdapter(selectQuery23, connection);
+            //DataSet ds23 = new DataSet();
+            //da23.Fill(ds23);
+            //comboBox11.DataSource = ds23.Tables[0];
+            //comboBox11.DisplayMember = "id_Aud";
+            //comboBox11.ValueMember = "nomer";
 
-            string selectQuery24 = "Select DISTINCT FIOpr from Prepodavateli";
-            MySqlDataAdapter da24 = new MySqlDataAdapter(selectQuery24, connection);
-            DataSet ds24 = new DataSet();
-            da24.Fill(ds24);
-            comboBox3.DataSource = ds24.Tables[0];
-            comboBox3.DisplayMember = "id_Prep";
-            comboBox3.ValueMember = "FIOpr";
+            //string selectQuery24 = "Select DISTINCT FIOpr from Prepodavateli";
+            //MySqlDataAdapter da24 = new MySqlDataAdapter(selectQuery24, connection);
+            //DataSet ds24 = new DataSet();
+            //da24.Fill(ds24);
+            //comboBox3.DataSource = ds24.Tables[0];
+            //comboBox3.DisplayMember = "id_Prep";
+            //comboBox3.ValueMember = "FIOpr";
 
-            string selectQuery27 = "Select DISTINCT name from Grypa";
-            MySqlDataAdapter da27 = new MySqlDataAdapter(selectQuery27, connection);
-            DataSet ds27 = new DataSet();
-            da27.Fill(ds27);
-            comboBox10.DataSource = ds27.Tables[0];
-            comboBox10.DisplayMember = "id_gr";
-            comboBox10.ValueMember = "name";
+            //string selectQuery27 = "Select DISTINCT name from Grypa";
+            //MySqlDataAdapter da27 = new MySqlDataAdapter(selectQuery27, connection);
+            //DataSet ds27 = new DataSet();
+            //da27.Fill(ds27);
+            //comboBox10.DataSource = ds27.Tables[0];
+            //comboBox10.DisplayMember = "id_gr";
+            //comboBox10.ValueMember = "name";
 
-            string selectQuery28 = "Select nazvanie from Zanatie";
-            MySqlDataAdapter da28 = new MySqlDataAdapter(selectQuery28, connection);
-            DataSet ds28 = new DataSet();
-            da28.Fill(ds28);
-            comboBox14.DataSource = ds28.Tables[0];
-            comboBox14.DisplayMember = "id_Zanatia";
-            comboBox14.ValueMember = "nazvanie";
+            //string selectQuery28 = "Select nazvanie from Zanatie";
+            //MySqlDataAdapter da28 = new MySqlDataAdapter(selectQuery28, connection);
+            //DataSet ds28 = new DataSet();
+            //da28.Fill(ds28);
+            //comboBox14.DataSource = ds28.Tables[0];
+            //comboBox14.DisplayMember = "id_Zanatia";
+            //comboBox14.ValueMember = "nazvanie";
 
-            string selectQuery29 = "Select  kafedra from Napravlenie";
-            MySqlDataAdapter da29 = new MySqlDataAdapter(selectQuery29, connection);
-            DataSet ds29 = new DataSet();
-            da29.Fill(ds29);
-            comboBox15.DataSource = ds29.Tables[0];
-            comboBox15.DisplayMember = "id_nap";
-            comboBox15.ValueMember = "kafedra";
+            //string selectQuery29 = "Select  kafedra from Napravlenie";
+            //MySqlDataAdapter da29 = new MySqlDataAdapter(selectQuery29, connection);
+            //DataSet ds29 = new DataSet();
+            //da29.Fill(ds29);
+            //comboBox15.DataSource = ds29.Tables[0];
+            //comboBox15.DisplayMember = "id_nap";
+            //comboBox15.ValueMember = "kafedra";
 
             ////////////////////////////Список всех преподов////////////
 
-            string selectQuery115 = "Select * from teachers";
-
+            string selectQuery115 = @"SELECT teachers.card_num,teachers.experience,teachers.FIO_teacher, department.name_department,post.name_post,degree.name_degree
+                                        FROM teachers
+                                        inner join department on department.id_department = teachers.id_department
+                                        inner join post on post.id_post = teachers.id_post
+                                        inner join degree on degree.id_degree = teachers.id_degree  ";
             DataTable table115 = new DataTable();
             MySqlDataAdapter adapter115 = new MySqlDataAdapter(selectQuery115, connection);
             adapter115.Fill(table115);
@@ -190,33 +177,64 @@ where  discipline.id_discipline = specialty.id_discipline)";
             comboBox18.DisplayMember = "card_num";
             comboBox18.ValueMember = "FIO_teacher";
 
-            string selectQuery18 = "Select DISTINCT kafedra from Napravlenie";
+            string selectQuery18 = "Select DISTINCT name_department from department";
             MySqlDataAdapter da18 = new MySqlDataAdapter(selectQuery18, connection);
             DataSet ds18 = new DataSet();
             da18.Fill(ds18);
             comboBox17.DataSource = ds18.Tables[0];
-            comboBox17.DisplayMember = "id_nap";
-            comboBox17.ValueMember = "kafedra";
+            comboBox17.DisplayMember = "id_department";
+            comboBox17.ValueMember = "name_department";
+            comboBox20.DataSource = ds18.Tables[0];
+            comboBox20.DisplayMember = "id_department";
+            comboBox20.ValueMember = "name_department";
+            comboBox22.DataSource = ds18.Tables[0];
+            comboBox22.DisplayMember = "id_department";
+            comboBox22.ValueMember = "name_department";
 
-            string selectQuery19 = "Select DISTINCT doljnost from teachers";
+            string selectQuery19 = "Select DISTINCT name_post from post";
             MySqlDataAdapter da19 = new MySqlDataAdapter(selectQuery19, connection);
             DataSet ds19 = new DataSet();
             da19.Fill(ds19);
             comboBox16.DataSource = ds19.Tables[0];
-            comboBox16.DisplayMember = "card_num";
-            comboBox16.ValueMember = "doljnost";
-
+            comboBox16.DisplayMember = "id_post";
+            comboBox16.ValueMember = "name_post";
             comboBox9.DataSource = ds19.Tables[0];
-            comboBox9.DisplayMember = "card_num";
-            comboBox9.ValueMember = "doljnost";
+            comboBox9.DisplayMember = "id_post";
+            comboBox9.ValueMember = "name_post";
+
+            string selectQuery199 = "Select DISTINCT name_degree from degree";
+            MySqlDataAdapter da199 = new MySqlDataAdapter(selectQuery199, connection);
+            DataSet ds199 = new DataSet();
+            da199.Fill(ds199);
+            comboBox19.DataSource = ds199.Tables[0];
+            comboBox19.DisplayMember = "id_degree";
+            comboBox19.ValueMember = "name_degree";
+            comboBox23.DataSource = ds199.Tables[0];
+            comboBox23.DisplayMember = "id_degree";
+            comboBox23.ValueMember = "name_degree";
+
+            string selectQuery21 = "Select DISTINCT card_num from teachers";
+            MySqlDataAdapter da21 = new MySqlDataAdapter(selectQuery21, connection);
+            DataSet ds21 = new DataSet();
+            da21.Fill(ds21);
+            comboBox21.DataSource = ds21.Tables[0];
+            comboBox21.DisplayMember = "card_num";
+            comboBox21.ValueMember = "card_num";
+            comboBox24.DataSource = ds21.Tables[0];
+            comboBox24.DisplayMember = "card_num";
+            comboBox24.ValueMember = "card_num";
+
+            //string id_pr = Convert.ToString(comboBox21.Items[comboBox21.SelectedIndex]);
+            //int id_prep = Convert.ToInt32(id_pr);
+            //if (id_prep ) { }
 
             ///////////////////////////////////////////////Изменить занятие////////////
-            string selectQuery116 = @"Select * from Raspis ";
+            //string selectQuery116 = @"Select * from Raspis ";
 
-            DataTable table116 = new DataTable();
-            MySqlDataAdapter adapter116 = new MySqlDataAdapter(selectQuery116, connection);
-            adapter116.Fill(table116);
-            dataGridView6.DataSource = table116;
+            //DataTable table116 = new DataTable();
+            //MySqlDataAdapter adapter116 = new MySqlDataAdapter(selectQuery116, connection);
+            //adapter116.Fill(table116);
+            //dataGridView6.DataSource = table116;
 
         }//Подгрузка при запуске
 
@@ -308,8 +326,8 @@ where day_week.name_day = '" + comboBox4.SelectedValue.ToString() + "' and numbe
         {
             string denned = Convert.ToString(comboBox7.Items[comboBox7.SelectedIndex]);
             string nompar = Convert.ToString(comboBox8.Items[comboBox8.SelectedIndex]);
-           // string denned = Convert.ToString(textBox3.Text);
-           // int nompar = Convert.ToInt32(textBox4.Text);
+            // string denned = Convert.ToString(textBox3.Text);
+            // int nompar = Convert.ToInt32(textBox4.Text);
 
             int nachned = Convert.ToInt32(textBox1.Text);
             int konned = Convert.ToInt32(textBox2.Text);
@@ -324,7 +342,7 @@ where day_week.name_day = '" + comboBox4.SelectedValue.ToString() + "' and numbe
             //добавление даты в таблицу дат
             string selectQuery13 = "INSERT INTO DataPar(denNedeli, nomerPary, nedStart, nedEnd) VALUES ('" + comboBox7.SelectedValue.ToString() + "','" + comboBox8.SelectedValue.ToString() + "','" + nachned + "','" + konned + "')";
             MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
-           connection.Open();
+            connection.Open();
             da13.ExecuteNonQuery();
             //MessageBox.Show("Данные добавлены!");
 
@@ -375,57 +393,54 @@ where day_week.name_day = '" + comboBox4.SelectedValue.ToString() + "' and numbe
             //connection.Open();
             da14.ExecuteNonQuery();
             MessageBox.Show("Занятие добавлено!");
-            
+
         }//Добавить занятие
 
         private void button14_Click(object sender, EventArgs e)
         {
-            string FIOpr = Convert.ToString(comboBox18.Items[comboBox18.SelectedIndex]);
-            string kaf = Convert.ToString(comboBox17.Items[comboBox17.SelectedIndex]);
 
-            if (FIOpr != null && kaf != null )
-            {
-                string selectQuery77 = @"Select FIOpr, doljnost from Prepodavateli where FIOpr = '" + comboBox18.SelectedValue.ToString() + "'";
+                string selectQuery77 = @"SELECT teachers.card_num, teachers.FIO_teacher, department.name_department FROM teachers 
+INNER join department on department.id_department=teachers.id_department
+Where department.name_department='" + comboBox17.SelectedValue.ToString() + "' AND teachers.FIO_teacher='" + comboBox18.SelectedValue.ToString() + "'";
                 DataTable tableay1 = new DataTable();
                 MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery77, connection);
                 adapteray1.Fill(tableay1);
                 dataGridView2.DataSource = tableay1;
-            }
-        }//Поиск преподавателя
+
+        }//Поиск преподавателя!
 
         private void button13_Click(object sender, EventArgs e)
         {
-            string fiop = Convert.ToString(textBox12.Text);
             string nomy = Convert.ToString(textBox11.Text);
             string staj = Convert.ToString(textBox15.Text);
+            string fiop = Convert.ToString(textBox12.Text);
+ 
 
-            string selectQuery13 = "INSERT INTO Prepodavateli(FIOpr, nomerUdostov, doljnost, staj) VALUES ('" + fiop + "','" + nomy + "','" + comboBox16.SelectedValue.ToString() + "','" + staj + "')";
-            MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
+            string selectQuery13t = "INSERT INTO teachers(card_num, experience, FIO_teacher, id_department, id_post, id_degree) VALUES ('" + nomy + "','" + staj +"','"+ fiop + "',(SELECT id_department FROM department where name_department = '"+ comboBox20.SelectedValue.ToString() + "'), (SELECT id_post FROM post where name_post = '"+ comboBox16.SelectedValue.ToString() + "'), (SELECT id_degree FROM degree where name_degree = '"+ comboBox19.SelectedValue.ToString() + "') )";
+            MySqlCommand da13 = new MySqlCommand(selectQuery13t, connection);
             connection.Open();
             da13.ExecuteNonQuery();
             MessageBox.Show("Преподаватель добавлен!");
-        }//Добавить нового препода
+
+        }//Добавить нового препода!
 
         private void button11_Click(object sender, EventArgs e)
         {
             string fiop = Convert.ToString(textBox10.Text);
-            string nomy = Convert.ToString(textBox9.Text);
             string staj = Convert.ToString(textBox16.Text);
-            string prid = Convert.ToString(textBox8.Text);
 
-            string selectQuery13 = "UPDATE Prepodavateli SET FIOpr='" + fiop + "', nomerUdostov='" + nomy + "', doljnost='" + comboBox9.SelectedValue.ToString() + "', staj='" + staj + "' WHERE id_Prep='" + prid + "'";
+            string selectQuery13 = "UPDATE teachers SET card_num='" + comboBox21.SelectedValue.ToString() + "', experience='" + staj+"', FIO_teacher='" + fiop + "', id_department=(SELECT id_department FROM department where name_department = '" + comboBox22.SelectedValue.ToString() + "'), id_post=(SELECT id_post FROM post where name_post = '" + comboBox9.SelectedValue.ToString() + "'),id_degree=(SELECT id_degree FROM degree where name_degree = '" + comboBox23.SelectedValue.ToString() + "') WHERE card_num='" + comboBox21.SelectedValue.ToString() + "'";
             MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
             connection.Open();
             da13.ExecuteNonQuery();
             MessageBox.Show("Данные изменены!");
-        }//Изменить данные о преподе
+        }//Изменить данные о преподе!
 
         private void button12_Click(object sender, EventArgs e)
         {
             string fiop = Convert.ToString(textBox14.Text);
-            string nomy = Convert.ToString(textBox13.Text);
-
-            string selectQuery14 = "DELETE FROM Prepodavateli where FIOpr = '" + fiop + "' and id_Prep='"+nomy+"'";
+ 
+            string selectQuery14 = "DELETE FROM teachers where card_num = '" + comboBox24.SelectedValue.ToString() + "'";
             MySqlCommand da13 = new MySqlCommand(selectQuery14, connection);
             connection.Open();
             da13.ExecuteNonQuery();
