@@ -175,20 +175,20 @@ where  discipline.id_discipline = specialty.id_discipline)";
 
             ////////////////////////////Список всех преподов////////////
 
-            string selectQuery115 = @"Select * from Prepodavateli ";
+            string selectQuery115 = "Select * from teachers";
 
             DataTable table115 = new DataTable();
             MySqlDataAdapter adapter115 = new MySqlDataAdapter(selectQuery115, connection);
             adapter115.Fill(table115);
             dataGridView1.DataSource = table115;
 
-            string selectQuery17 = "Select DISTINCT FIOpr from Prepodavateli";
+            string selectQuery17 = "Select DISTINCT FIO_teacher from teachers";
             MySqlDataAdapter da17 = new MySqlDataAdapter(selectQuery17, connection);
             DataSet ds17 = new DataSet();
             da17.Fill(ds17);
             comboBox18.DataSource = ds17.Tables[0];
-            comboBox18.DisplayMember = "id_Prep";
-            comboBox18.ValueMember = "FIOpr";
+            comboBox18.DisplayMember = "card_num";
+            comboBox18.ValueMember = "FIO_teacher";
 
             string selectQuery18 = "Select DISTINCT kafedra from Napravlenie";
             MySqlDataAdapter da18 = new MySqlDataAdapter(selectQuery18, connection);
@@ -198,16 +198,16 @@ where  discipline.id_discipline = specialty.id_discipline)";
             comboBox17.DisplayMember = "id_nap";
             comboBox17.ValueMember = "kafedra";
 
-            string selectQuery19 = "Select DISTINCT doljnost from Prepodavateli";
+            string selectQuery19 = "Select DISTINCT doljnost from teachers";
             MySqlDataAdapter da19 = new MySqlDataAdapter(selectQuery19, connection);
             DataSet ds19 = new DataSet();
             da19.Fill(ds19);
             comboBox16.DataSource = ds19.Tables[0];
-            comboBox16.DisplayMember = "id_Prep";
+            comboBox16.DisplayMember = "card_num";
             comboBox16.ValueMember = "doljnost";
 
             comboBox9.DataSource = ds19.Tables[0];
-            comboBox9.DisplayMember = "id_Prep";
+            comboBox9.DisplayMember = "card_num";
             comboBox9.ValueMember = "doljnost";
 
             ///////////////////////////////////////////////Изменить занятие////////////
@@ -229,17 +229,16 @@ where  discipline.id_discipline = specialty.id_discipline)";
 
             if (denned != null && nompar != null && ned != null)
             {
-
-            string selectQuery7 = @"Select DISTINCT audience.number_aud, audience.housing from sschedule
+                
+                string selectQuery7 = @"Select DISTINCT audience.number_aud, audience.housing from sschedule
 inner join day_week on day_week.id_day = sschedule.id_day
 inner join number_lesson on number_lesson.id_num = sschedule.id_num
 inner join audience on audience.number_aud = sschedule.number_aud WHERE audience.number_aud NOT IN(Select audience.number_aud from sschedule
 inner join day_week on day_week.id_day = sschedule.id_day
 inner join number_lesson on number_lesson.id_num = sschedule.id_num
 inner join audience on audience.number_aud = sschedule.number_aud
-where day_week.name_day = '" + denned + "' and number_lesson.number = '" + nompar + "' and '" + ned + "' between number_lesson.week_start and number_lesson.week_end)";
-
-
+where day_week.name_day = '" + comboBox4.SelectedValue.ToString() + "' and number_lesson.number = '" + comboBox5.SelectedValue.ToString() + "' and '" + ned + "' between number_lesson.week_start and number_lesson.week_end)";
+                
                 //выводитлишние аудитории
 
                 //where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar + "'";
@@ -247,14 +246,17 @@ where day_week.name_day = '" + denned + "' and number_lesson.number = '" + nompa
                 MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery7, connection);
                 adapteray1.Fill(tableay1);
                 dataGridView5.DataSource = tableay1;
+            } else
+            {
+                MessageBox.Show("Данные заданы не корректно");
             }
 
-        }//Поиск свободных аудиторий
+        }//Поиск свободных аудиторий!
 
         private void button4_Click(object sender, EventArgs e)
         {
             Application.Restart();
-        }//Перезагрузить приложение
+        }//Перезагрузить приложение!
 
         private void button3_Click(object sender, EventArgs e)
         {            
@@ -275,7 +277,7 @@ where day_week.name_day = '" + denned + "' and number_lesson.number = '" + nompa
             connection.Open();
             da13.ExecuteNonQuery();
             MessageBox.Show("Аудитория добавлена!");
-        }//Добавить аудиторию
+        }//Добавить аудиторию!
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -286,7 +288,7 @@ where day_week.name_day = '" + denned + "' and number_lesson.number = '" + nompa
             connection.Open();
             da13.ExecuteNonQuery();
             MessageBox.Show("Аудитория удалена!");
-        }//Удалить аудиторию
+        }//Удалить аудиторию!
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -299,8 +301,8 @@ where day_week.name_day = '" + denned + "' and number_lesson.number = '" + nompa
             MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
             connection.Open();
             da13.ExecuteNonQuery();
-            MessageBox.Show("Данные изменены!");
-        }//Изменение аудитории
+            MessageBox.Show("Аудитория изменена!");
+        }//Изменение аудитории!
 
         private void button1_Click(object sender, EventArgs e)
         {
