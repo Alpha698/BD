@@ -23,13 +23,15 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             string selectQuery5 = @"Select study_group.name_group, day_week.name_day, number_lesson.number, discipline.name_discipline, teachers.FIO_teacher, audience.number_aud, number_lesson.week_start, number_lesson.week_end
-                                    from sschedule 
+                                    from  discipline, sschedule
                                     inner join study_group on study_group.id_group = sschedule.id_group 
                                     inner join audience on audience.number_aud = sschedule.number_aud
-                                    inner join teachers on teachers.id_teacher = sschedule.id_teacher                                   
+                                    inner join teachers on teachers.card_num = sschedule.card_num                
                                     inner join day_week on day_week.id_day = sschedule.id_day 
                                     inner join type_occupation on type_occupation.id_type = sschedule.id_type
-                                    inner join number_lesson on number_lesson.id_num = sschedule.id_num";
+                                    inner join number_lesson on number_lesson.id_num = sschedule.id_num
+                                    WHERE study_group.id_specialty IN (Select id_specialty from specialty
+where  discipline.id_discipline = specialty.id_discipline)";
 
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery5, connection);
