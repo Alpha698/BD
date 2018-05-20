@@ -37,18 +37,24 @@ namespace WindowsFormsApp1
             MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery5, connection);
             adapter.Fill(table);
             dataGridView4.DataSource = table;
-
-            var column1 = new DataGridViewColumn();
-            column1.HeaderText = "Название группы"; //текст в шапке
-            column1.Width = 100; //ширина колонки
-
-            dataGridView4.Columns.Remove(column1);//Add(column1);
+            dataGridView4.Columns[0].HeaderText = "Название группы";
+            dataGridView4.Columns[1].HeaderText = "День недели";
+            dataGridView4.Columns[2].HeaderText = "Номер пары";
+            dataGridView4.Columns[3].HeaderText = "Дисциплина";
+            dataGridView4.Columns[4].HeaderText = "Преподаватель";
+            dataGridView4.Columns[5].HeaderText = "Номер аудитории";
+            dataGridView4.Columns[6].HeaderText = "Начальная неделя";
+            dataGridView4.Columns[7].HeaderText = "Конечная неделя";
 
             string selectQuery6 = "SELECT * FROM audience";
             DataTable tableay = new DataTable();
             MySqlDataAdapter adapteray = new MySqlDataAdapter(selectQuery6, connection);
             adapteray.Fill(tableay);
             dataGridView3.DataSource = tableay;
+            dataGridView3.Columns[0].HeaderText = "Номер аудитории"; dataGridView3.Columns[0].MinimumWidth = 120;
+            dataGridView3.Columns[1].HeaderText = "Кол-во мест";
+            dataGridView3.Columns[2].HeaderText = "Корпус"; dataGridView3.Columns[2].MinimumWidth = 125;
+
             //////////////////////////////////////////////////Для выбора своб аудитории////////////
             string selectQuery9 = "Select DISTINCT name_day from day_week";
             MySqlDataAdapter da9 = new MySqlDataAdapter(selectQuery9, connection);
@@ -100,6 +106,12 @@ namespace WindowsFormsApp1
             MySqlDataAdapter adapter115 = new MySqlDataAdapter(selectQuery115, connection);
             adapter115.Fill(table115);
             dataGridView1.DataSource = table115;
+            dataGridView1.Columns[0].HeaderText = "Номер карты"; 
+            dataGridView1.Columns[1].HeaderText = "Стаж";
+            dataGridView1.Columns[2].HeaderText = "Преподаватель";
+            dataGridView1.Columns[3].HeaderText = "Кафедра";
+            dataGridView1.Columns[4].HeaderText = "Должность";
+            dataGridView1.Columns[5].HeaderText = "Звание";
 
             string selectQuery17 = "Select DISTINCT FIO_teacher from teachers";
             MySqlDataAdapter da17 = new MySqlDataAdapter(selectQuery17, connection);
@@ -177,6 +189,14 @@ namespace WindowsFormsApp1
             MySqlDataAdapter adapter116 = new MySqlDataAdapter(selectQuery116, connection);
             adapter116.Fill(table116);
             dataGridView6.DataSource = table116;
+            dataGridView6.Columns[0].HeaderText = "Название группы";
+            dataGridView6.Columns[1].HeaderText = "День недели";
+            dataGridView6.Columns[2].HeaderText = "Номер пары";
+            dataGridView6.Columns[3].HeaderText = "Дисциплина";
+            dataGridView6.Columns[4].HeaderText = "Преподаватель";
+            dataGridView6.Columns[5].HeaderText = "Номер аудитории";
+            dataGridView6.Columns[6].HeaderText = "Начальная неделя";
+            dataGridView6.Columns[7].HeaderText = "Конечная неделя";
 
             string selectQuery28 = "Select name_discipline from discipline";
             MySqlDataAdapter da28 = new MySqlDataAdapter(selectQuery28, connection);
@@ -257,6 +277,9 @@ where day_week.name_day = '" + comboBox4.SelectedValue.ToString() + "' and numbe
                 MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery7, connection);
                 adapteray1.Fill(tableay1);
                 dataGridView5.DataSource = tableay1;
+                dataGridView5.Columns[0].HeaderText = "Номер аудитории"; 
+                dataGridView5.Columns[1].HeaderText = "Корпус"; dataGridView5.Columns[1].MinimumWidth = 125;
+
             } else
             {
                 MessageBox.Show("Данные заданы не корректно");
@@ -388,6 +411,9 @@ Where department.name_department='" + comboBox17.SelectedValue.ToString() + "' A
                 MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery77, connection);
                 adapteray1.Fill(tableay1);
                 dataGridView2.DataSource = tableay1;
+            dataGridView2.Columns[0].HeaderText = "Номер карты";
+            dataGridView2.Columns[1].HeaderText = "Преподаватель";
+            dataGridView2.Columns[2].HeaderText = "Кафедра";
 
         }//Поиск преподавателя!
 
@@ -444,18 +470,23 @@ Where department.name_department='" + comboBox17.SelectedValue.ToString() + "' A
             //connection.Open();
             //da13.ExecuteNonQuery();
             //MessageBox.Show("Данные изменены!");
+
+
+            //из-за способа хранения занятий, необходимо найти по всем полям такую запись(проверить)
+            //вставить новые значения в другие таблицы и записать в расписание ссылки
+
         }//Изменить пункт расписания (занятие)
 
-        private void button19_Click(object sender, EventArgs e)
-        {
-            string fiop = Convert.ToString(textBox24.Text);
+        //private void button19_Click(object sender, EventArgs e)
+        //{
+        //    string fiop = Convert.ToString(textBox24.Text);
 
-            string selectQuery14 = "DELETE FROM Raspis where id_zap = '" + fiop + "'";
-            MySqlCommand da13 = new MySqlCommand(selectQuery14, connection);
-            connection.Open();
-            da13.ExecuteNonQuery();
-            MessageBox.Show("Преподаватель удален!");
-        }//Удалить занятие
+        //    string selectQuery14 = "DELETE FROM Raspis where id_zap = '" + fiop + "'";
+        //    MySqlCommand da13 = new MySqlCommand(selectQuery14, connection);
+        //    connection.Open();
+        //    da13.ExecuteNonQuery();
+        //    MessageBox.Show("Преподаватель удален!");
+        //}//Удалить занятие
 
     }
 }
