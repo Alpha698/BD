@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+        /////////////Подключение к базе данных///////////////
         MySqlConnection connection = new MySqlConnection("server=localhost;port=3306; Initial Catalog='Practical_classes';username=root;password=;SslMode=none");
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -54,8 +55,7 @@ namespace WindowsFormsApp1
             dataGridView3.Columns[0].HeaderText = "Номер аудитории"; dataGridView3.Columns[0].MinimumWidth = 120;
             dataGridView3.Columns[1].HeaderText = "Кол-во мест";
             dataGridView3.Columns[2].HeaderText = "Корпус"; dataGridView3.Columns[2].MinimumWidth = 125;
-
-            //////////////////////////////////////////////////Для выбора своб аудитории////////////
+            //////////////////Для выбора своб аудитории////////////
             string selectQuery9 = "Select DISTINCT name_day from day_week";
             MySqlDataAdapter da9 = new MySqlDataAdapter(selectQuery9, connection);
             DataSet ds9 = new DataSet();
@@ -71,8 +71,7 @@ namespace WindowsFormsApp1
             comboBox5.DataSource = ds10.Tables[0];
             comboBox5.DisplayMember = "id_num";
             comboBox5.ValueMember = "number";
-
-            ///////////////////////////////////////////////Для добавления и удаления и изменения аудитории////////////
+            //////////////Для добавления и удаления и изменения аудитории////////////
             string selectQuery7 = "Select DISTINCT number_aud from audience";
             MySqlDataAdapter da = new MySqlDataAdapter(selectQuery7, connection);
             DataSet ds = new DataSet();
@@ -94,9 +93,7 @@ namespace WindowsFormsApp1
             comboBox1.DataSource = ds3.Tables[0];
             comboBox1.DisplayMember = "number_aud";
             comboBox1.ValueMember = "housing";
-
-            ////////////////////////////Список всех преподов////////////
-
+            /////////Список всех преподов/////////
             string selectQuery115 = @"SELECT teachers.card_num,teachers.experience,teachers.FIO_teacher, department.name_department,post.name_post,degree.name_degree
                                         FROM teachers
                                         inner join department on department.id_department = teachers.id_department
@@ -167,13 +164,7 @@ namespace WindowsFormsApp1
             comboBox24.DataSource = ds21.Tables[0];
             comboBox24.DisplayMember = "card_num";
             comboBox24.ValueMember = "card_num";
-
-            //string id_pr = Convert.ToString(comboBox21.Items[comboBox21.SelectedIndex]);
-            //int id_prep = Convert.ToInt32(id_pr);
-            //if (id_prep ) { }
-
-            /////////////////////////////////////////// Для добавления занятия////////////////////
-
+           //////////////// Для добавления занятия/////////////////
             string selectQuery116 = @"Select study_group.name_group, day_week.name_day, number_lesson.number, discipline.name_discipline, teachers.FIO_teacher, audience.number_aud, number_lesson.week_start, number_lesson.week_end
                                     from  discipline, sschedule
                                     inner join study_group on study_group.id_group = sschedule.id_group 
@@ -245,22 +236,18 @@ namespace WindowsFormsApp1
             comboBox3.DataSource = ds147.Tables[0];
             comboBox3.DisplayMember = "card_num";
             comboBox3.ValueMember = "FIO_teacher";
-
-            ///////////////////////////////////////////////Изменить занятие////////////
-
+            ////////////////Изменить занятие////////////
 
         }//Подгрузка при запуске!
 
         private void button5_Click(object sender, EventArgs e)
         {
-
             string denned = Convert.ToString(comboBox4.Items[comboBox4.SelectedIndex]);
             string nompar = Convert.ToString(comboBox5.Items[comboBox5.SelectedIndex]);
             string ned = Convert.ToString(comboBox6.Items[comboBox6.SelectedIndex]);
 
             if (denned != null && nompar != null && ned != null)
             {
-                
                 string selectQuery7 = @"Select DISTINCT audience.number_aud, audience.housing from sschedule
 inner join day_week on day_week.id_day = sschedule.id_day
 inner join number_lesson on number_lesson.id_num = sschedule.id_num
@@ -269,10 +256,7 @@ inner join day_week on day_week.id_day = sschedule.id_day
 inner join number_lesson on number_lesson.id_num = sschedule.id_num
 inner join audience on audience.number_aud = sschedule.number_aud
 where day_week.name_day = '" + comboBox4.SelectedValue.ToString() + "' and number_lesson.number = '" + comboBox5.SelectedValue.ToString() + "' and '" + ned + "' between number_lesson.week_start and number_lesson.week_end)";
-                
-                //выводитлишние аудитории
 
-                //where DataPar.denNedeli = '" + denned + "' and DataPar.nomerPary = '" + nompar + "'";
                 DataTable tableay1 = new DataTable();
                 MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery7, connection);
                 adapteray1.Fill(tableay1);
@@ -297,14 +281,7 @@ where day_week.name_day = '" + comboBox4.SelectedValue.ToString() + "' and numbe
 
             int nomayd = Convert.ToInt32(textBox5.Text);
             int kolvom = Convert.ToInt32(textBox6.Text);
-           // string korpys = Convert.ToString(comboBox2.Items[comboBox2.SelectedIndex]);
             string dept = comboBox2.Text;
-            //int etaj = Convert.ToInt32(textBox4.Text);
-            //int don = Convert.ToInt32(textBox6.Text);
-            //string facult = textBox7.Text;
-            //string spets = textBox8.Text;
-            //int group = Convert.ToInt32(textBox9.Text);
-            //bool status = checkBox1.Checked;
 
             string selectQuery13 = "INSERT INTO audience(number_aud, quantity_seats, housing) VALUES ('" + nomayd + "','" + kolvom + "','" + dept + "')";
             MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
@@ -340,7 +317,6 @@ where day_week.name_day = '" + comboBox4.SelectedValue.ToString() + "' and numbe
             int nompar = Convert.ToInt32(textBox4.Text);
             int nachned = Convert.ToInt32(textBox1.Text);
             int konned = Convert.ToInt32(textBox2.Text);
-
             string nomay = Convert.ToString(comboBox11.Items[comboBox11.SelectedIndex]);
             string gryp = Convert.ToString(comboBox10.Items[comboBox10.SelectedIndex]);
             string prep = Convert.ToString(comboBox3.Items[comboBox3.SelectedIndex]);
@@ -356,54 +332,10 @@ where day_week.name_day = '" + comboBox4.SelectedValue.ToString() + "' and numbe
             da133.ExecuteNonQuery();
             MessageBox.Show("Данные добавлены!");
 
-            ////добавление даты в таблицу дат
-            //string selectQuery13 = "INSERT INTO DataPar(denNedeli, nomerPary, nedStart, nedEnd) VALUES ('" + comboBox7.SelectedValue.ToString() + "','" + comboBox8.SelectedValue.ToString() + "','" + nachned + "','" + konned + "')";
-            //MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
-            //connection.Open();
-            //da13.ExecuteNonQuery();
-            ////MessageBox.Show("Данные добавлены!");
-
-            ////вывод даты если совпало с выбраными
-            //string selectQuery140 = "Select DISTINCT id_data from DataPar where denNedeli='" + comboBox7.SelectedValue.ToString() + "' and nomerPary='" + comboBox8.SelectedValue.ToString() + "' and nedStart='" + nachned + "' and nedEnd ='" + konned + "'";
-            //MySqlCommand da140 = new MySqlCommand(selectQuery140, connection);
-            //da140.ExecuteNonQuery();
-            //string name140 = da140.ExecuteScalar().ToString();
-
-            ////предмет
-            //string selectQuery141 = "Select DISTINCT id_Zanatia from Zanatie where Zanatie.nazvanie='" + comboBox14.SelectedValue.ToString() + "'";
-            //MySqlCommand da141 = new MySqlCommand(selectQuery141, connection);
-            //da141.ExecuteNonQuery();
-            //string name141 = da141.ExecuteScalar().ToString();
-
-            ////препод
-            //string selectQuery142 = "Select DISTINCT id_Prep from Prepodavateli where Prepodavateli.FIOpr='" + comboBox3.SelectedValue.ToString() + "'";
-            //MySqlCommand da142 = new MySqlCommand(selectQuery142, connection);
-            //da142.ExecuteNonQuery();
-            //string name142 = da142.ExecuteScalar().ToString();
-
-            ////аудитория
-            //string selectQuery143 = "Select DISTINCT id_Aud from Auditorya where  Auditorya.nomer='" + comboBox11.SelectedValue.ToString() + "'";
-            //MySqlCommand da143 = new MySqlCommand(selectQuery143, connection);
-            //da143.ExecuteNonQuery();
-            //string name143 = da143.ExecuteScalar().ToString();
-
-            ////группа
-            //string selectQuery144 = "Select DISTINCT id_gr from Grypa where Grypa.name='" + comboBox10.SelectedValue.ToString() + "'";
-            //MySqlCommand da144 = new MySqlCommand(selectQuery144, connection);
-            //da144.ExecuteNonQuery();
-            //string name144 = da144.ExecuteScalar().ToString();
-
-            //string selectQuery15 = "INSERT INTO Raspis(id_data, id_Zanatia, id_Prep, id_Aud, id_gr, id_nap) VALUES ('" + name140 + "','" + name141 + "','" + name142 + "','" + name143 + "','" + name144 + "','" + name145 + "')";
-            //MySqlCommand da14 = new MySqlCommand(selectQuery15, connection);
-            ////connection.Open();
-            //da14.ExecuteNonQuery();
-            //MessageBox.Show("Занятие добавлено!");
-
         }//Добавить занятие!-
 
         private void button14_Click(object sender, EventArgs e)
         {
-
                 string selectQuery77 = @"SELECT teachers.card_num, teachers.FIO_teacher, department.name_department FROM teachers 
 INNER join department on department.id_department=teachers.id_department
 Where department.name_department='" + comboBox17.SelectedValue.ToString() + "' AND teachers.FIO_teacher='" + comboBox18.SelectedValue.ToString() + "'";
@@ -457,37 +389,9 @@ Where department.name_department='" + comboBox17.SelectedValue.ToString() + "' A
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //string data = Convert.ToString(textBox17.Text);
-            //string zanat = Convert.ToString(textBox18.Text);
-            //string prep = Convert.ToString(textBox19.Text);
-            //string aud = Convert.ToString(textBox20.Text);
-            //string gr = Convert.ToString(textBox21.Text);
-            //string nap = Convert.ToString(textBox22.Text);
-            //string zap = Convert.ToString(textBox23.Text);
-
-            //string selectQuery13 = "UPDATE Raspis SET id_data='" + data + "', id_Zanatia='" + zanat + "', id_Prep='" + prep + "', id_Aud='" + aud + "' , id_gr='" + gr + "', id_nap='" + nap + "' WHERE id_zap='" + zap + "'";
-            //MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
-            //connection.Open();
-            //da13.ExecuteNonQuery();
-            //MessageBox.Show("Данные изменены!");
-
-
-            //из-за способа хранения занятий, необходимо найти по всем полям такую запись(проверить)
-            //вставить новые значения в другие таблицы и записать в расписание ссылки
 
         }//Изменить пункт расписания (занятие)
-
-        //private void button19_Click(object sender, EventArgs e)
-        //{
-        //    string fiop = Convert.ToString(textBox24.Text);
-
-        //    string selectQuery14 = "DELETE FROM Raspis where id_zap = '" + fiop + "'";
-        //    MySqlCommand da13 = new MySqlCommand(selectQuery14, connection);
-        //    connection.Open();
-        //    da13.ExecuteNonQuery();
-        //    MessageBox.Show("Преподаватель удален!");
-        //}//Удалить занятие
-
+        
     }
 }
 
