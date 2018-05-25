@@ -46,3 +46,14 @@ D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyRefer
 D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 D:\REP\BD\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+d:\REP\BD\Why not\Maximus\bin\Debug\WindowsFormsApp1.exe.config
+d:\REP\BD\Why not\Maximus\obj\Debug\WindowsFormsApp1.exe
+d:\REP\BD\Why not\Maximus\obj\Debug\WindowsFormsApp1.pdb
+d:\REP\BD\Why not\Maximus\bin\Debug\WindowsFormsApp1.exe
+d:\REP\BD\Why not\Maximus\bin\Debug\WindowsFormsApp1.pdb
+d:\REP\BD\Why not\Maximus\bin\Debug\MySql.Data.dll
+d:\REP\BD\Why not\Maximus\bin\Debug\MySql.Data.xml
+d:\REP\BD\Why not\Maximus\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+d:\REP\BD\Why not\Maximus\obj\Debug\WindowsFormsApp1.Form1.resources
+d:\REP\BD\Why not\Maximus\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+d:\REP\BD\Why not\Maximus\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
