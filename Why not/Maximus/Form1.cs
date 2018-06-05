@@ -84,40 +84,64 @@ inner join specialty on specialty.id_spec = doctor.id_spec";
             comboBox20.DataSource = ds18.Tables[0];
             comboBox20.DisplayMember = "id_spec";
             comboBox20.ValueMember = "name_spec";
+            comboBox1.DataSource = ds18.Tables[0];
+            comboBox1.DisplayMember = "id_spec";
+            comboBox1.ValueMember = "name_spec";
 
-            //string selectQuery19 = "Select DISTINCT name_post from post";
-            //MySqlDataAdapter da19 = new MySqlDataAdapter(selectQuery19, connection);
-            //DataSet ds19 = new DataSet();
-            //da19.Fill(ds19);
-            //comboBox16.DataSource = ds19.Tables[0];
-            //comboBox16.DisplayMember = "id_post";
-            //comboBox16.ValueMember = "name_post";
-            //comboBox9.DataSource = ds19.Tables[0];
-            //comboBox9.DisplayMember = "id_post";
-            //comboBox9.ValueMember = "name_post";
+            string selectQuery199 = "Select DISTINCT name_categ from category";//Вывод без повторений всех категорий врачей
+            MySqlDataAdapter da199 = new MySqlDataAdapter(selectQuery199, connection);//Отработка запроса и подключения к бд
+            DataSet ds199 = new DataSet();
+            da199.Fill(ds199);
+            //Вывод результата в элемент comboBox19(выпадающий список)
+            comboBox19.DataSource = ds199.Tables[0];
+            comboBox19.DisplayMember = "id_categ";
+            comboBox19.ValueMember = "name_categ";
+            //Вывод результата в элемент comboBox2(выпадающий список)
+            comboBox2.DataSource = ds199.Tables[0];
+            comboBox2.DisplayMember = "id_categ";
+            comboBox2.ValueMember = "name_categ";
 
-            //string selectQuery199 = "Select DISTINCT name_degree from degree";
-            //MySqlDataAdapter da199 = new MySqlDataAdapter(selectQuery199, connection);
-            //DataSet ds199 = new DataSet();
-            //da199.Fill(ds199);
-            //comboBox19.DataSource = ds199.Tables[0];
-            //comboBox19.DisplayMember = "id_degree";
-            //comboBox19.ValueMember = "name_degree";
-            //comboBox23.DataSource = ds199.Tables[0];
-            //comboBox23.DisplayMember = "id_degree";
-            //comboBox23.ValueMember = "name_degree";
+            string selectQuery21 = "Select DISTINCT nom_diploma from doctor";//Вывод без повторений всех номеров диплома врачей
+            MySqlDataAdapter da21 = new MySqlDataAdapter(selectQuery21, connection);//Отработка запроса и подключения к бд
+            DataSet ds21 = new DataSet();
+            da21.Fill(ds21);
+            //Вывод результата в элемент comboBox21(выпадающий список)
+            comboBox21.DataSource = ds21.Tables[0];
+            comboBox21.DisplayMember = "nom_diploma";
+            comboBox21.ValueMember = "nom_diploma";
+            //Вывод результата в элемент comboBox3(выпадающий список)
+            comboBox3.DataSource = ds21.Tables[0];
+            comboBox3.DisplayMember = "nom_diploma";
+            comboBox3.ValueMember = "nom_diploma";
 
-            //string selectQuery21 = "Select DISTINCT card_num from teachers";
-            //MySqlDataAdapter da21 = new MySqlDataAdapter(selectQuery21, connection);
-            //DataSet ds21 = new DataSet();
-            //da21.Fill(ds21);
-            //comboBox21.DataSource = ds21.Tables[0];
-            //comboBox21.DisplayMember = "card_num";
-            //comboBox21.ValueMember = "card_num";
-            //comboBox24.DataSource = ds21.Tables[0];
-            //comboBox24.DisplayMember = "card_num";
-            //comboBox24.ValueMember = "card_num";
+            /*ДЛЯ ТРЕТЕЙ ВКЛАДКИ*/
 
+            //Вывести всех данных о пациентах из таблицы patient 
+            string selectQuery135 = @"Select patient.nomer_card, patient.FIOpats,patient.sex, patient.adress, patient.birthday, patient.tel_number, illness.name_ill
+from patient
+inner join illness on illness.id_ill = patient.id_ill";
+            DataTable table135 = new DataTable();
+            MySqlDataAdapter adapter135 = new MySqlDataAdapter(selectQuery135, connection); //Отработка запроса и подключения к бд
+            adapter135.Fill(table135);
+            //Вывод результата в таблицу dataGridView3
+            dataGridView3.DataSource = table135;
+            //Имена столбцов(можно не задавать, тогда будут названия столбцов с бд)
+            dataGridView3.Columns[0].HeaderText = "Номер карты";
+            dataGridView3.Columns[1].HeaderText = "ФИО пациента";
+            dataGridView3.Columns[2].HeaderText = "пол";
+            dataGridView3.Columns[3].HeaderText = "Адресс";
+            dataGridView3.Columns[4].HeaderText = "Дата рождения";
+            dataGridView3.Columns[5].HeaderText = "Контакты";
+            dataGridView3.Columns[6].HeaderText = "Болезнь";
+
+            string selectQuery171 = "Select FIOpats from patient "; //Вывод без повторений всех пациентов
+            MySqlDataAdapter da171 = new MySqlDataAdapter(selectQuery171, connection);//Отработка запроса и подключения к бд
+            DataSet ds171 = new DataSet();
+            da171.Fill(ds171);
+            //Вывод результата в элемент comboBox6(выпадающий список)
+            comboBox6.DataSource = ds171.Tables[0];
+            comboBox6.DisplayMember = "nomer_card";
+            comboBox6.ValueMember = "FIOpats";
 
         }//Подгрузка данных при запуске приложения!
 
@@ -147,43 +171,58 @@ inner join specialty on specialty.id_spec = doctor.id_spec";
 
         private void button13_Click(object sender, EventArgs e)
         {
-            //string nomy = Convert.ToString(textBox11.Text);
-            //string staj = Convert.ToString(textBox15.Text);
-            //string fiop = Convert.ToString(textBox12.Text);
- 
+            string nomd = Convert.ToString(textBox11.Text);// Запись в перемонную значения с textBox 
+            string fiovr = Convert.ToString(textBox12.Text);// Запись в перемонную значения с textBox 
+            string staj = Convert.ToString(textBox15.Text);// Запись в перемонную значения с textBox 
+            string oklad = Convert.ToString(textBox1.Text);// Запись в перемонную значения с textBox 
+            //Добавляет в таблицу доктор запись со значениями из текстбоксов и выпадающих списков...
+            string selectQuery13t = "INSERT INTO doctor(nom_diploma, FIO, staj, zarplata, id_categ, id_spec) VALUES ('" + nomd + "','" + fiovr + "','" + staj + "','" + oklad + "',(SELECT id_categ FROM category where name_categ = '" + comboBox19.SelectedValue.ToString() + "'), (SELECT id_spec FROM specialty where name_spec = '" + comboBox20.SelectedValue.ToString() + "') )";
+            MySqlCommand da13 = new MySqlCommand(selectQuery13t, connection);//Отработка запроса и подключения к бд
+            connection.Open();
+            da13.ExecuteNonQuery();
+            MessageBox.Show("Преподаватель добавлен!");//Вывод сообщения об успехе
 
-            //string selectQuery13t = "INSERT INTO teachers(card_num, experience, FIO_teacher, id_department, id_post, id_degree) VALUES ('" + nomy + "','" + staj +"','"+ fiop + "',(SELECT id_department FROM department where name_department = '"+ comboBox20.SelectedValue.ToString() + "'), (SELECT id_post FROM post where name_post = '"+ comboBox16.SelectedValue.ToString() + "'), (SELECT id_degree FROM degree where name_degree = '"+ comboBox19.SelectedValue.ToString() + "') )";
-            //MySqlCommand da13 = new MySqlCommand(selectQuery13t, connection);
-            //connection.Open();
-            //da13.ExecuteNonQuery();
-            //MessageBox.Show("Преподаватель добавлен!");
-
-        }//Добавить нового препода!
+        }//Добавление нового врача!
 
         private void button11_Click(object sender, EventArgs e)
         {
-            //string fiop = Convert.ToString(textBox10.Text);
-            //string staj = Convert.ToString(textBox16.Text);
-
-            //string selectQuery13 = "UPDATE teachers SET card_num='" + comboBox21.SelectedValue.ToString() + "', experience='" + staj+"', FIO_teacher='" + fiop + "', id_department=(SELECT id_department FROM department where name_department = '" + comboBox22.SelectedValue.ToString() + "'), id_post=(SELECT id_post FROM post where name_post = '" + comboBox9.SelectedValue.ToString() + "'),id_degree=(SELECT id_degree FROM degree where name_degree = '" + comboBox23.SelectedValue.ToString() + "') WHERE card_num='" + comboBox21.SelectedValue.ToString() + "'";
-            //MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
-            //connection.Open();
-            //da13.ExecuteNonQuery();
-            //MessageBox.Show("Данные изменены!");
-        }//Изменить данные о преподе!
+            string fiovr = Convert.ToString(textBox10.Text);// Запись в перемонную значения с textBox 
+            string staj = Convert.ToString(textBox16.Text);// Запись в перемонную значения с textBox 
+            string oklad = Convert.ToString(textBox2.Text);// Запись в перемонную значения с textBox 
+            //Обновляет (перезаписывает) запись...
+            string selectQuery13 = "UPDATE doctor SET nom_diploma='" + comboBox21.SelectedValue.ToString() + "', FIO='" + fiovr + "', staj='" + staj + "', zarplata='" + oklad + "', id_categ=(SELECT id_categ FROM category where name_categ = '" + comboBox2.SelectedValue.ToString() + "'), id_spec=(SELECT id_spec FROM specialty where name_spec = '" + comboBox1.SelectedValue.ToString() + "') WHERE nom_diploma='" + comboBox21.SelectedValue.ToString() + "'";
+            MySqlCommand da13 = new MySqlCommand(selectQuery13, connection);
+            connection.Open();
+            da13.ExecuteNonQuery();
+            MessageBox.Show("Данные изменены!");//Вывод сообщения об успехе
+        }//Изменение данных о враче!
 
         private void button12_Click(object sender, EventArgs e)
         {
-            //string fiop = Convert.ToString(textBox14.Text);
+            string fiovr = Convert.ToString(textBox3.Text);
+            //Удаляет запись из таблицы доктор если совпал номер диплома
+            string selectQuery14 = "DELETE FROM doctor where nom_diploma = '" + comboBox3.SelectedValue.ToString() + "'";
+            MySqlCommand da13 = new MySqlCommand(selectQuery14, connection);
+            connection.Open();
+            da13.ExecuteNonQuery();
+            MessageBox.Show("Преподаватель удален!");//Вывод сообщения об успехе
+        }//Удаление врача!
 
-            //string selectQuery14 = "DELETE FROM teachers where card_num = '" + comboBox24.SelectedValue.ToString() + "'";
-            //MySqlCommand da13 = new MySqlCommand(selectQuery14, connection);
-            //connection.Open();
-            //da13.ExecuteNonQuery();
-            //MessageBox.Show("Преподаватель удален!");
-        }//Уволить препода!
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string selectQuery77 = @"SELECT patient.FIOpats, illness.name_ill
+                                    FROM patient
+                                    INNER join illness on illness.id_ill = patient.id_ill
+            Where patient.FIOpats='" + comboBox6.SelectedValue.ToString() + "'";
+            DataTable tableay1 = new DataTable();
+            MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery77, connection); //Отработка запроса и подключения к бд
+            adapteray1.Fill(tableay1);
+            //Вывод результата в таблицу dataGridView2
+            dataGridView5.DataSource = tableay1;
+            //Имена столбцов(можно не задавать, тогда будут названия столбцов с бд)
+            dataGridView5.Columns[0].HeaderText = "ФИО пациента";
+            dataGridView5.Columns[1].HeaderText = "Заболевание";
+        }//Поиск пациентов по болезни
     }
 }
 
