@@ -19,79 +19,71 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-        MySqlConnection connection = new MySqlConnection("server=localhost;port=3306; Initial Catalog='libraryv3_0';username=root;password=;SslMode=none");
+        //Строка подключения к бд
+        MySqlConnection connection = new MySqlConnection("server=localhost;port=3306; Initial Catalog='hospital';username=root;password=;SslMode=none");
         private void Form1_Load(object sender, EventArgs e)
         {
-            //string selectQuery5 = @"Select study_group.name_group, day_week.name_day, number_lesson.number, discipline.name_discipline, teachers.FIO_teacher, audience.number_aud, number_lesson.week_start, number_lesson.week_end
-            //                        from  discipline, sschedule
-            //                        inner join study_group on study_group.id_group = sschedule.id_group 
-            //                        inner join audience on audience.number_aud = sschedule.number_aud
-            //                        inner join teachers on teachers.card_num = sschedule.card_num                
-            //                        inner join day_week on day_week.id_day = sschedule.id_day 
-            //                        inner join type_occupation on type_occupation.id_type = sschedule.id_type
-            //                        inner join number_lesson on number_lesson.id_num = sschedule.id_num
-            //                        WHERE study_group.id_specialty IN (Select id_specialty from specialty
-            //                                                            where  discipline.id_discipline = specialty.id_discipline)";
-            string selectQuery5 = @"Select * from book_thema";
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery5, connection);
+
+            /*ДЛЯ ПЕРВОЙ ВКЛАДКИ*/
+
+            //Вывести дату визита, ФИО и адресс пациента, фио врача, из таблицы visit обьеденив patient и visit по полю nomer_card, а также doctor и visit по полю nom_diploma
+            string selectQuery5 = @"Select visit.visit_date, patient.FIOpats, patient.adress, doctor.FIO
+from visit
+inner join patient on patient.nomer_card = visit.nomer_card
+inner join doctor on doctor.nom_diploma = visit.nom_diploma";
+            DataTable table = new DataTable(); 
+            MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery5, connection); //Отработка запроса и подключения к бд
             adapter.Fill(table);
+            //Вывод результата в таблицу dataGridView4
             dataGridView4.DataSource = table;
-            //dataGridView4.Columns[0].HeaderText = "Название группы";
-            //dataGridView4.Columns[1].HeaderText = "День недели";
-            //dataGridView4.Columns[2].HeaderText = "Номер пары";
-            //dataGridView4.Columns[3].HeaderText = "Дисциплина";
-            //dataGridView4.Columns[4].HeaderText = "Преподаватель";
-            //dataGridView4.Columns[5].HeaderText = "Номер аудитории";
-            //dataGridView4.Columns[6].HeaderText = "Начальная неделя";
-            //dataGridView4.Columns[7].HeaderText = "Конечная неделя";
+            //Имена столбцов(можно не задавать, тогда будут названия столбцов с бд)
+            dataGridView4.Columns[0].HeaderText = "Дата записи";
+            dataGridView4.Columns[1].HeaderText = "ФИО пациента";
+            dataGridView4.Columns[2].HeaderText = "Адресс пациента";
+            dataGridView4.Columns[3].HeaderText = "ФИО врача";
+            //Ширина столбцов(можно не указывато, тогда будет 100)
+            dataGridView4.Columns[0].MinimumWidth = 125;
+            dataGridView4.Columns[1].MinimumWidth = 125;
+            dataGridView4.Columns[2].MinimumWidth = 125;
+            dataGridView4.Columns[3].MinimumWidth = 125;
 
+            /*ДЛЯ ВТОРОЙ ВКЛАДКИ*/
 
-            ///////////////////////////////////////////////Для добавления и удаления и изменения аудитории////////////
-
-
-
-            ////////////////////////////Список всех преподов////////////
-
-            //string selectQuery115 = @"SELECT teachers.card_num,teachers.experience,teachers.FIO_teacher, department.name_department,post.name_post,degree.name_degree
-            //                            FROM teachers
-            //                            inner join department on department.id_department = teachers.id_department
-            //                            inner join post on post.id_post = teachers.id_post
-            //                            inner join degree on degree.id_degree = teachers.id_degree  ";
-
-            string selectQuery115 = @"Select * from reader";
+            //Вывести номер диплома, фио, стаж, зп, категорию и специальность врача из таблицы doctor обьеденив category и doctor , а также specialty и doctor 
+            string selectQuery115 = @"Select doctor.nom_diploma, doctor.FIO,doctor.staj, doctor.zarplata, category.name_categ, specialty.name_spec
+from doctor
+inner join category on category.id_categ = doctor.id_categ
+inner join specialty on specialty.id_spec = doctor.id_spec";
             DataTable table115 = new DataTable();
-            MySqlDataAdapter adapter115 = new MySqlDataAdapter(selectQuery115, connection);
+            MySqlDataAdapter adapter115 = new MySqlDataAdapter(selectQuery115, connection); //Отработка запроса и подключения к бд
             adapter115.Fill(table115);
+            //Вывод результата в таблицу dataGridView1
             dataGridView1.DataSource = table115;
-            //dataGridView1.Columns[0].HeaderText = "Номер карты"; 
-            //dataGridView1.Columns[1].HeaderText = "Стаж";
-            //dataGridView1.Columns[2].HeaderText = "Преподаватель";
-            //dataGridView1.Columns[3].HeaderText = "Кафедра";
-            //dataGridView1.Columns[4].HeaderText = "Должность";
-            //dataGridView1.Columns[5].HeaderText = "Звание";
+            //Имена столбцов(можно не задавать, тогда будут названия столбцов с бд)
+            dataGridView1.Columns[0].HeaderText = "Номер диплома";
+            dataGridView1.Columns[1].HeaderText = "ФИО врача";
+            dataGridView1.Columns[2].HeaderText = "Стаж работы";
+            dataGridView1.Columns[3].HeaderText = "Оклад";
+            dataGridView1.Columns[4].HeaderText = "Категория";
+            dataGridView1.Columns[5].HeaderText = "Специализация";
 
-            //string selectQuery17 = "Select DISTINCT FIO_teacher from teachers";
-            //MySqlDataAdapter da17 = new MySqlDataAdapter(selectQuery17, connection);
-            //DataSet ds17 = new DataSet();
-            //da17.Fill(ds17);
-            //comboBox18.DataSource = ds17.Tables[0];
-            //comboBox18.DisplayMember = "card_num";
-            //comboBox18.ValueMember = "FIO_teacher";
+            string selectQuery17 = "Select DISTINCT FIO from doctor"; //Вывод без повторений всех ФИО врачей
+            MySqlDataAdapter da17 = new MySqlDataAdapter(selectQuery17, connection);//Отработка запроса и подключения к бд
+            DataSet ds17 = new DataSet();
+            da17.Fill(ds17);
+            //Вывод результата в элемент comboBox18(выпадающий список)
+            comboBox18.DataSource = ds17.Tables[0];
+            comboBox18.DisplayMember = "nom_diploma";
+            comboBox18.ValueMember = "FIO";
 
-            //string selectQuery18 = "Select DISTINCT name_department from department";
-            //MySqlDataAdapter da18 = new MySqlDataAdapter(selectQuery18, connection);
-            //DataSet ds18 = new DataSet();
-            //da18.Fill(ds18);
-            //comboBox17.DataSource = ds18.Tables[0];
-            //comboBox17.DisplayMember = "id_department";
-            //comboBox17.ValueMember = "name_department";
-            //comboBox20.DataSource = ds18.Tables[0];
-            //comboBox20.DisplayMember = "id_department";
-            //comboBox20.ValueMember = "name_department";
-            //comboBox22.DataSource = ds18.Tables[0];
-            //comboBox22.DisplayMember = "id_department";
-            //comboBox22.ValueMember = "name_department";
+            string selectQuery18 = "Select DISTINCT name_spec from specialty"; //Вывод без повторений всех специализаций врачей
+            MySqlDataAdapter da18 = new MySqlDataAdapter(selectQuery18, connection);//Отработка запроса и подключения к бд
+            DataSet ds18 = new DataSet();
+            da18.Fill(ds18);
+            //Вывод результата в элемент comboBox20(выпадающий список)
+            comboBox20.DataSource = ds18.Tables[0];
+            comboBox20.DisplayMember = "id_spec";
+            comboBox20.ValueMember = "name_spec";
 
             //string selectQuery19 = "Select DISTINCT name_post from post";
             //MySqlDataAdapter da19 = new MySqlDataAdapter(selectQuery19, connection);
@@ -127,30 +119,31 @@ namespace WindowsFormsApp1
             //comboBox24.ValueMember = "card_num";
 
 
-        }//Подгрузка при запуске!
-
+        }//Подгрузка данных при запуске приложения!
 
         private void button4_Click(object sender, EventArgs e)
         {
             Application.Restart();
-        }//Перезагрузить приложение!
-
+        }//Перезагрузка приложения!
 
         private void button14_Click(object sender, EventArgs e)
         {
+            //Вывод номера диплома, фио, специальности из таблицы доктор, обеденив специальность с доктором, если имя доктора совпадает с выбранным из выпадающего списка
+            string selectQuery77 = @"SELECT doctor.nom_diploma, doctor.FIO, specialty.name_spec
+                                    FROM doctor
+                                    INNER join specialty on specialty.id_spec=doctor.id_spec
+            Where doctor.FIO='" + comboBox18.SelectedValue.ToString() + "'";
+            DataTable tableay1 = new DataTable();
+            MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery77, connection); //Отработка запроса и подключения к бд
+            adapteray1.Fill(tableay1);
+            //Вывод результата в таблицу dataGridView2
+            dataGridView2.DataSource = tableay1;
+            //Имена столбцов(можно не задавать, тогда будут названия столбцов с бд)
+            dataGridView2.Columns[0].HeaderText = "Номер диплома";
+            dataGridView2.Columns[1].HeaderText = "ФИО";
+            dataGridView2.Columns[2].HeaderText = "Смециализация";
 
-//                string selectQuery77 = @"SELECT teachers.card_num, teachers.FIO_teacher, department.name_department FROM teachers 
-//INNER join department on department.id_department=teachers.id_department
-//Where department.name_department='" + comboBox17.SelectedValue.ToString() + "' AND teachers.FIO_teacher='" + comboBox18.SelectedValue.ToString() + "'";
-//                DataTable tableay1 = new DataTable();
-//                MySqlDataAdapter adapteray1 = new MySqlDataAdapter(selectQuery77, connection);
-//                adapteray1.Fill(tableay1);
-//                dataGridView2.DataSource = tableay1;
-//            dataGridView2.Columns[0].HeaderText = "Номер карты";
-//            dataGridView2.Columns[1].HeaderText = "Преподаватель";
-//            dataGridView2.Columns[2].HeaderText = "Кафедра";
-
-        }//Поиск преподавателя!
+        }//Поиск врача по ФИО!
 
         private void button13_Click(object sender, EventArgs e)
         {
